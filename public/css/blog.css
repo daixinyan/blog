@@ -1,0 +1,27 @@
+.blog{
+    width: 100%;
+
+    background-color: #FCFCFB;
+    border-radius: 10px;
+    opacity: 0.7;
+    margin-top: 20px;
+
+    word-break: break-all;
+}
+
+.blog-header{
+    margin: 0;
+    padding: 0;
+    border: none;
+}
+.blog-title{
+    text-align: center;
+}
+.blog-link{
+    width: 100%;
+}
+.blog-content{
+    font-size: 25px;
+    width: 90%;
+    margin:20px auto ;
+}

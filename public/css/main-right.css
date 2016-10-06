@@ -1,0 +1,38 @@
+.main-right{
+     /*height: 360px;*/
+     width: 232px;
+     background-color: transparent;
+     float: right;
+
+     margin: 0;
+     padding: 0;
+     border: none;
+ }
+
+.category{
+    width: 100%;
+    background-color: #FCFCFB;
+    border-radius: 10px;
+    opacity:0.5;
+
+    margin-top: 20px;
+    border: none;
+    padding: 0;
+}
+.category-title{
+    padding-top: 10px;
+    padding-left: 5px;
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+
+
+
+.category-selector{
+    border: none;
+    padding-bottom: 5px;
+    padding-left: 5px;
+    padding-top: 0;
+    margin-top: 0;
+    background: transparent;
+}
