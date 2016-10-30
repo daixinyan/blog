@@ -19,14 +19,14 @@ var blog ={
             this.next.text('没有更多了');
         }else{
             this.next.text(object.next.title);
-            this.next.attr('href','/public/html/blog.html?'+object.next.id);
+            this.next.attr('href','/blog.html?'+object.next.id);
         }
 
         if(object.last=='notExist'){
             this.last.text('这是第一篇')
         }else{
             this.last.text(object.last.title);
-            this.last.attr('href','/public/html/blog.html?'+object.last.id);
+            this.last.attr('href','/blog.html?'+object.last.id);
         }
 
         if(object.detail!='notExist'){
