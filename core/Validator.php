@@ -15,6 +15,15 @@ class Validator
     protected $success = [];
 
     /**
+     * @var Model
+     */
+    protected $model ;
+    public function __construct($model)
+    {
+        $this->model = $model;
+    }
+
+    /**
      * @param Request $data
      * @param $rules
      * @return bool return true if $this->failed empty
@@ -59,8 +68,20 @@ class Validator
                 $result = $this->$method($value);
             }
             if($result===false){
-                return false;
+                break;
             }
+        }
+
+        //if not found value and has set default_value ,return default value
+        if($result===false)
+        {
+            $end_rule = end($rule);
+            $rule_exploded = explode(':',$end_rule,2);
+            if($rule_exploded[0]=='default_value' &&isset($rule_exploded[1]))
+            {
+                return $rule_exploded[1];
+            }
+
         }
         return $result;
     }
@@ -96,5 +117,31 @@ class Validator
     }
     protected function shortest($value,$parameter){
 
+    }
+
+    protected function unique($value,$parameter){
+        if($this->model->exist($parameter, $value))
+        {
+            return false;
+        }
+        return $value;
+    }
+
+    protected function session($value, $parameter)
+    {
+        $parameters = explode('|',$parameter);
+        if($parameters[0]==='=')
+        {
+            return $value==$parameters[1]?$value:false;
+        }elseif ($parameters[0]==='==')
+        {
+            return $value===$parameters[1]?$value:false;
+        }elseif ($parameters[0]==='>')
+        {
+            return $value>$parameters[1]?$value:false;
+        }elseif ($parameters[0]==='<')
+        {
+            return $value<$parameters[1]?$value:false;
+        }
     }
 }

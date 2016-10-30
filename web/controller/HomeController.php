@@ -13,10 +13,13 @@ use core\Controller;
 
 class HomeController extends Controller
 {
-    public function index(){
-//        $url = '/public/html/index.html';
-//        header('Location: '.$url);
-//        exit;
-        phpinfo();
+    public function index()
+    {
+        $this->jump(HOME_PAGE);
+    }
+
+    public function admin()
+    {
+        $this->jump(ADMIN_PAGE);
     }
 }

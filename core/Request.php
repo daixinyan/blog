@@ -11,10 +11,12 @@ namespace core;
 
 class Request extends MyArray
 {
+    protected $model;
 
-    public function __construct($parameters)
+    public function __construct($parameters, $model)
     {
         $this->data = array_merge($parameters?:[],$_POST);
+        $this->model = $model;
     }
 
     /**
@@ -22,6 +24,13 @@ class Request extends MyArray
      */
     protected $validator = null;
 
+    protected function addSlashes()
+    {
+        foreach ($this->data as $key=>$value)
+        {
+            $this->data[$key] = addslashes($value);
+        }
+    }
 
     /**
      * @param $rules
@@ -31,7 +40,7 @@ class Request extends MyArray
     public function validate($rules){
 
         if(!$this->validator){
-            $this->validator = new Validator();
+            $this->validator = new Validator($this->model);
         }
         if($this->validator->validate($this,$rules)){
             return $this->validator->getSuccessValues();

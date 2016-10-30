@@ -21,6 +21,9 @@ return [
 
     '/post'=>[
         ['POST'],['blog','post']
-    ]
+    ],
 
+    '/admin'=>[
+        ['GET','POST'], ['home','admin']
+    ],
 ];

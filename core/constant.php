@@ -8,3 +8,7 @@
 define('PAGE_SIZE',10);
 define('KEY_REQUEST_METHOD',0);
 define('KEY_ROUTER',1);
+
+
+define('HOME_PAGE','/index.html');
+define('ADMIN_PAGE','/admin.html');

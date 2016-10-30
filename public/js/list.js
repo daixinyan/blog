@@ -22,7 +22,7 @@ var blogList ={
             var object = myself.item.clone(true);
             var href = object.find('a').eq(0);
             href.text(item.title);
-            href.attr('href','/public/html/blog.html?'+item.id);
+            href.attr('href','/blog.html?'+item.id);
             myself.ul.append(object);
         })
 

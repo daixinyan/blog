@@ -20,4 +20,10 @@ class Controller
         Model::delete();
     }
 
+    protected function jump($url)
+    {
+        header('Location: '.$url);
+        exit;
+    }
+
 }
