@@ -58,6 +58,7 @@ class App
 
     protected static function call(){
 
+
         $controllerClass = "\\web\\controller\\".self::$controller."Controller";
         $modelClass = "\\web\\model\\".self::$controller."Model";
 
@@ -82,8 +83,6 @@ class App
         self::$request_url = $_SERVER['REQUEST_URI'];//start with '/'
         self::$url_array = explode('/',self::$request_url);// the first element must be ""(empty)
         self::$request_method = $_SERVER['REQUEST_METHOD'];
-
-
         self::$mapper = include APP_PATH.'core/config/mapper.php';
 
     }
@@ -129,6 +128,7 @@ class App
 
     protected static function matchedFunction(){
         list(self::$controller, self::$method) = self::$url_value[KEY_ROUTER];
+        self::$controller = ucfirst(self::$controller);
     }
 
 }
