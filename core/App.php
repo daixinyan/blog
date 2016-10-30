@@ -84,7 +84,7 @@ class App
         self::$request_method = $_SERVER['REQUEST_METHOD'];
 
 
-        self::$mapper = include 'config/mapper.php';
+        self::$mapper = include APP_PATH.'core/config/mapper.php';
 
     }
 
