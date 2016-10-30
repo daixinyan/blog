@@ -37,7 +37,8 @@ class Request extends MyArray
      * @return array
      * @throws \Exception
      */
-    public function validate($rules){
+    public function validate($rules)
+    {
 
         if(!$this->validator){
             $this->validator = new Validator($this->model);
@@ -45,8 +46,14 @@ class Request extends MyArray
         if($this->validator->validate($this,$rules)){
             return $this->validator->getSuccessValues();
         }else{
+            dump($this->validator->getFailedKeys());
             throw new \Exception();
         }
+    }
+
+    public function getFailedKeys()
+    {
+        return $this->validator->getFailedKeys();
     }
 
 }

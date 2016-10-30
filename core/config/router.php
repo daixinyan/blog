@@ -9,21 +9,21 @@
 return [
 
     '/list'=>[
-        ['POST'],  ['blog','search']
+        ['POST'],  ['blog','search'],[]
     ],
     '/search/:bound/:order/:key/:category'=>[
-        ['GET'],  ['blog','search']
+        ['GET'],  ['blog','search'],[]
     ],
 
     '/detail/:id'=>[
-        ['GET','POST'], ['blog','detail']
+        ['GET','POST'], ['blog','detail'],[]
     ],
 
     '/post'=>[
-        ['POST'],['blog','post']
+        ['POST'],['blog','post'],[]
     ],
 
     '/admin'=>[
-        ['GET','POST'], ['home','admin']
+        ['GET','POST'], ['home','admin'],[]
     ],
 ];

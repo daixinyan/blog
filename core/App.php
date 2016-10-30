@@ -26,7 +26,9 @@ class App
 
     protected static $router = null;
 
-   
+    protected static $auth;
+
+    protected static $mapper;
 
     /**
      * 项目的入口方法
@@ -34,28 +36,55 @@ class App
      */
     public static function run(){
 
+
         self::init();
         self::$url_key = self::findMatchUrl();
         self::$url_value = self::$router[self::$url_key];
         self::requestMethod();
+        self::checkAuth();
         self::matchedFunction();
         self::call();
 
     }
 
+    protected function checkAuth()
+    {
+        self::$auth = new Auth();
+        foreach (self::$url_value[KEY_AUTH] as $method)
+        {
+            self::$auth->$method();
+        }
+    }
+
     protected static function call(){
-        $class = "\\web\\controller\\".self::$controller."Controller";
-        $controller = new $class();
-        call_user_func_array([$controller, self::$method],[new Request(self::$parameters)]);
+
+        $controllerClass = "\\web\\controller\\".self::$controller."Controller";
+        $modelClass = "\\web\\model\\".self::$controller."Model";
+
+
+        $controller = new $controllerClass();
+        $model = class_exists($modelClass)?new $modelClass():new Model();
+        $model->setModelToView(self::$mapper);
+
+
+
+        $controller->setModel($model);
+        $controller->setAuth(self::$auth);
+        $request = new Request(self::$parameters, $model);
+        call_user_func_array([$controller, self::$method],[$request]);
     }
 
 
     protected static function init(){
         self::$router = require 'config/router.php';
-        self::$router['/'] = [['GET','POST'],[self::$controller,self::$method]];
+        self::$router['/'] = [ ['GET','POST'],[self::$controller,self::$method] ];
         self::$request_url = $_SERVER['REQUEST_URI'];//start with '/'
         self::$url_array = explode('/',self::$request_url);// the first element must be ""(empty)
         self::$request_method = $_SERVER['REQUEST_METHOD'];
+
+
+        self::$mapper = include 'config/mapper.php';
+
     }
 
 

@@ -57,3 +57,24 @@ function endsWith($haystack, $needle){
 function getCurrentDateTime(){
     return date("Y-m-d H:i:s", time());
 }
+
+function convertType($type)
+{
+    switch ($type)
+    {
+        case 'skill':
+            return 0;
+        case 'reward':
+            return 1;
+    }
+    return -1;
+}
+
+function convertCommoditiesForHtml($urlKey,&$tableRows){
+
+    foreach ($tableRows as &$row){
+        $url = &$row[$urlKey];
+        $url = explode(',',$url);
+    }
+}
+
