@@ -65,6 +65,12 @@ class Controller
         exit(0);
     }
 
+    protected function jump($url)
+    {
+        header('Location: '.$url);
+        exit(0);
+    }
+
     /**
      * if without login, print message and exit;
      */
