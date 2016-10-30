@@ -77,7 +77,7 @@ class App
 
 
     protected static function init(){
-        self::$router = require 'config/router.php';
+        self::$router = require APP_PATH.'core/config/router.php';
         self::$router['/'] = [ ['GET','POST'],[self::$controller,self::$method],[] ];
         self::$request_url = $_SERVER['REQUEST_URI'];//start with '/'
         self::$url_array = explode('/',self::$request_url);// the first element must be ""(empty)

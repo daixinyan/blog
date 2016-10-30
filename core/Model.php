@@ -37,7 +37,7 @@ class Model
             return;
         }
         try {
-            $config = require 'config/database.php';
+            $config = require APP_PATH.'core/config/database.php';
             $config_server = $config['SEVER'];
             $config_database = $config['DATABASE'];
             $config_username = $config['USERNAME'];
