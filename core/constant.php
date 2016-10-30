@@ -15,6 +15,7 @@ define('KEY_AUTH',2);
  */
 define('WEB_HTML_ROOT','/');
 define('HOME_PAGE',WEB_HTML_ROOT.'index.html');
+define('ADMIN_PAGE',WEB_HTML_ROOT.'admin.html');
 define('LOGIN_PAGE',WEB_HTML_ROOT.'login.html');
 define('REGISTER_PAGE',WEB_HTML_ROOT.'register.html');
 define('',WEB_HTML_ROOT.'.html');
