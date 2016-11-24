@@ -41,10 +41,19 @@ class Validator
             if($result===false){
                 $this->failed[] = $key;
             }else{
-                $this->success[$key] = $result;
+                $this->success[$key] = $this->addSlash($result);
             }
         }
         return !$this->failed;
+    }
+
+    public function addSlash($str)
+    {
+        if(!get_magic_quotes_gpc())
+        {
+            return addslashes($str);//$name 是获取用户输入的一个值
+        }
+        return $str;
     }
 
 
