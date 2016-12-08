@@ -1,3 +1,5 @@
+;
+url_base = '/blog'
 var blogList ={
     init: function () {
         this.ul = $("#list");
@@ -35,7 +37,7 @@ function list_time() {
 
     $.ajax(
         {
-            url:'/search/100000/desc',
+            url:url_base+'/search/100000/desc',
             success:function (data) {
                 console.log('success load.');
                 blogList.updateList(data);
@@ -51,7 +53,7 @@ function list_category() {
 
 function list_search() {
     $.post(
-        '/search',
+        url_base+'/search',
         {
             bound: 1,
             order:'desc',

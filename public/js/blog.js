@@ -1,7 +1,7 @@
 /**
  * Created by darxan on 2016/10/2.
  */
-
+url_base = '/blog'
 var blog ={
 
     init: function () {
@@ -53,7 +53,7 @@ $(document).ready(function () {
         var params = full_url.substr(index + 1);
         $.ajax(
             {
-                url:'/detail/'+params,
+                url:url_base+'/detail/'+params,
                 success:function (data) {
                     console.log(data);
                     blog.update(data)

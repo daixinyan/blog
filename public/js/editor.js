@@ -2,6 +2,7 @@
  * Created by darxan on 2016/10/13.
  */
 ;
+url_base = '/blog'
 var editor;
 KindEditor.ready(function(K) {
         editor = K.create('textarea[name="content"]', {
@@ -55,7 +56,7 @@ KindEditor.ready(function(K) {
                 alert(content_html);
                 alert(input_title);
                 alert(input_category);
-                $.post('/post',
+                $.post(url_base+'/post',
                     {
                         category:input_category,
                         title:input_title,
