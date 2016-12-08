@@ -10,6 +10,11 @@ define('KEY_REQUEST_METHOD',0);
 define('KEY_ROUTER',1);
 define('KEY_AUTH',2);
 
+/***
+ * prefix means: such as alias in apache "/blog",
+ * if none: ''
+ */
+define('WEB_PREFIX','/blog');
 /**
  * page location constant
  */

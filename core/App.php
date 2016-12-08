@@ -81,8 +81,10 @@ class App
         self::$router = require APP_PATH.'core/config/router.php';
         self::$router['/'] = [ ['GET','POST'],[self::$controller,self::$method],[] ];
         self::$request_url = $_SERVER['REQUEST_URI'];//start with '/'
-        echo self::$request_url;
-        exit();
+        if(WEB_PREFIX=='' || strpos(self::$request_url, WEB_PREFIX)==0)
+        {
+            self::$request_url = substr(self::$request_url, strlen(WEB_PREFIX));
+        }
         self::$url_array = explode('/',self::$request_url);// the first element must be ""(empty)
         self::$request_method = $_SERVER['REQUEST_METHOD'];
         self::$mapper = include APP_PATH.'core/config/mapper.php';
