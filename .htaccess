@@ -1,5 +1,6 @@
 RewriteEngine on
 
+RewriteBase "/blog"
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FIELNAME} !-d
 
