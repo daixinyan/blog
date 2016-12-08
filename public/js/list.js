@@ -1,5 +1,5 @@
 ;
-url_base = '/blog'
+
 var blogList ={
     init: function () {
         this.ul = $("#list");
@@ -24,7 +24,7 @@ var blogList ={
             var object = myself.item.clone(true);
             var href = object.find('a').eq(0);
             href.text(item.title);
-            href.attr('href','/blog.html?'+item.id);
+            href.attr('href',generateBlogHtmlAddress(item.id));
             myself.ul.append(object);
         })
 
@@ -37,7 +37,7 @@ function list_time() {
 
     $.ajax(
         {
-            url:url_base+'/search/100000/desc',
+            url:generateAddress('/search/100000/desc'),
             success:function (data) {
                 console.log('success load.');
                 blogList.updateList(data);
@@ -53,7 +53,7 @@ function list_category() {
 
 function list_search() {
     $.post(
-        url_base+'/search',
+        generateAddress('/search'),
         {
             bound: 1,
             order:'desc',
