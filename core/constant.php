@@ -18,7 +18,7 @@ define('WEB_PREFIX','/blog');
 /**
  * page location constant
  */
-define('WEB_HTML_ROOT','/');
+define('WEB_HTML_ROOT',WEB_PREFIX);
 define('HOME_PAGE',WEB_HTML_ROOT.'index.html');
 define('ADMIN_PAGE',WEB_HTML_ROOT.'admin.html');
 define('LOGIN_PAGE',WEB_HTML_ROOT.'login.html');
