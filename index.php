@@ -14,5 +14,12 @@ require_once APP_PATH.'core/autoload.php';
 require_once APP_PATH.'core/function.php';
 require_once APP_PATH.'core/constant.php';
 
-
+dump(
+    [
+        'DOCUMENT_ROOT'=>$_SERVER['DOCUMENT_ROOT'],
+        '__dir__'=>__DIR__,
+        'APP_PATH'=>APP_PATH,
+    ]
+);
+exit();
 \core\App::run();
