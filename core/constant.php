@@ -15,6 +15,7 @@ define('KEY_AUTH',2);
  * if none: ''
  */
 define('WEB_PREFIX','/blog');
+define('DOCUMENT_PREFIX','/blog');
 /**
  * page location constant
  */

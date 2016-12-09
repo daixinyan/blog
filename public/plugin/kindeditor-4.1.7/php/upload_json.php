@@ -8,17 +8,9 @@
  */
 
 require_once 'JSON.php';
-
-//$php_path = dirname(__FILE__) . '/';
-//$php_url = dirname($_SERVER['PHP_SELF']) . '/';
-//
-////文件保存目录路径
-//$save_path = $php_path . '../attached/';
-////文件保存目录URL
-//$save_url = $php_url . '../attached/';
-
-$save_path = $_SERVER['DOCUMENT_ROOT'].'/public/upload/';
-$save_url = '/public/upload/';
+require_once '../../../../core/constant.php';
+$save_path = $_SERVER['DOCUMENT_ROOT'].DOCUMENT_PREFIX.'/public/upload/';
+$save_url = DOCUMENT_PREFIX.'/public/upload/';
 
 //定义允许上传的文件扩展名
 $ext_arr = array(
