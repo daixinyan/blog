@@ -47,7 +47,7 @@ class App
 
     }
 
-    protected function checkAuth()
+    protected static function checkAuth()
     {
         self::$auth = new Auth();
         foreach (self::$url_value[KEY_AUTH] as $method)
@@ -95,7 +95,7 @@ class App
 
     
     protected static function findMatchUrl(){
-        if(self::$request_url=='/'){
+        if(self::$request_url=='/' || self::$request_url==''){
             return '/';
         }
         $url_key_set = array_keys(self::$router);

@@ -14,8 +14,11 @@ define('KEY_AUTH',2);
  * prefix means: such as alias in apache "/blog",
  * if none: ''
  */
-define('WEB_PREFIX','/blog');
-define('DOCUMENT_PREFIX','/blog');
+//define('WEB_PREFIX','/blog');
+//define('DOCUMENT_PREFIX','/blog');
+define('WEB_PREFIX','');
+define('DOCUMENT_PREFIX','');
+
 /**
  * page location constant
  */

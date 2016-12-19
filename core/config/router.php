@@ -26,4 +26,7 @@ return [
     '/admin'=>[
         ['GET','POST'], ['home','admin'],[]
     ],
+    '/index'=>[
+        ['GET','POST'], ['home','index'],[]
+    ],
 ];
