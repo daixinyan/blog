@@ -15,25 +15,25 @@ class BlogModel extends Model
 {
 
     protected $table = 'blog';
-    public function search($bound=0,$desc=true,$key=null, $category=null,$page_size=PAGE_SIZE){
+    public function search($bound=0,$desc=true,$key=null, $category=null,$page_size){
 
         if ($desc){
-            $order = 'desc';
-            $where = 'id<?';
+            $order = ' desc ';
+            $where = ' id<? ';
         }else{
-            $order = 'asc';
-            $where = 'id>?';
+            $order = ' asc ';
+            $where = ' id>? ';
         }
         $parameters = [$bound,];
-        if($category){
+        if($category && $category!='all'){
             $where.= ' AND category = ? ';
             $parameters[] = $category;
-        }if ($key){
+        }
+        if ($key && $key!=''){
             $where.=' AND title LIKE ? ';
             $parameters[] = "%$key%";
         }
         $query =" SELECT title,created_at,category,id FROM $this->table WHERE $where  ORDER BY id $order LIMIT $page_size";
-        
         $blogDetailStatement = Model::getPDO()->prepare($query);
         $blogDetailStatement->execute($parameters);
         return ($blogDetailStatement->fetchAll()) ;

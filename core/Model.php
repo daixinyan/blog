@@ -123,8 +123,7 @@ class Model
         $table = $table?:$this->getTableName();
         $sql = "SELECT * FROM $table WHERE $field  =? ";
         $pdoStatement = Model::getPDO()->prepare($sql);
-        $pdoStatement->execute(array_values($array));
-        return $pdoStatement->fetchAll();
+        return $pdoStatement->execute(array_values($array));
     }
 
     public function update_by_assoc($array,$where,$table=null)
@@ -137,12 +136,12 @@ class Model
         $field = join(' =? ,', $fields);
         $table = $table?:$this->getTableName();
 
-        $where_field = join(' =? AND', array_keys($where));
+        $where_field = join(' =? AND ', array_keys($where));
         $where_values = array_values($where);
         $sql = "UPDATE  $table SET $field =? WHERE $where_field =?";
+        echo $sql;
         $pdoStatement = Model::getPDO()->prepare($sql);
-        $pdoStatement->execute(array_merge($values,$where_values));
-        return $pdoStatement->fetchAll();
+        return $pdoStatement->execute(array_merge($values,$where_values));
     }
 
     public function count_row($field, $value, $table)
@@ -171,37 +170,17 @@ class Model
         return $queryResult->fetchAll();
     }
 
-
-    public function commoditiesInfo($where,$order=' ',$start=0,$count=PAGE_SIZE)
-    {
-        $sql = "SELECT commodities.*,users.name,users.phone,users.avatar,"
-            ."group_concat(pictures.pic_path) as pic_paths FROM commodities,users,pictures"
-            ." WHERE  commodities.id=pictures.id AND commodities.publisher_id=users.id ";
-
-        $sql .= $where;
-        $sql .= " GROUP BY commodities.id ";
-        $sql .= $order;
-
-        $sql .= " LIMIT $start,$count";
-        $queryResult = Model::getPDO()->query($sql);
-        return $queryResult->fetchAll();
+    public function distinct($field, $table=null){
+        $table = $table?:$this->getTableName();
+        $sql = "SELECT DISTINCT($field) FROM $table";
+        $pdoStatement =Model::getPDO()->query($sql);
+        if ($pdoStatement->errorCode() !='00000'){
+            return [];
+        }
+        $result = $pdoStatement->fetchAll();
+        $result = call_user_func_array('array_merge_recursive', $result);
+        return current($result);
     }
 
-    public function transactionInfo($where,$order=' ',$start=0,$count=PAGE_SIZE)
-    {
-        $sql = "SELECT commodities.*,users.name,users.phone,users.avatar,transaction.*"
-            ."group_concat(pictures.pic_path) as pic_paths FROM commodities,users,pictures,transaction"
-            ." WHERE  commodities.id=pictures.id AND transaction.commodity_id=commodities.id"
-            ." AND commodities.publisher_id=users.id ";
-
-        $sql .= $where;
-        $sql .= " GROUP BY commodities.id ";
-        $sql .= $order;
-
-        $sql .= " LIMIT $start,$count";
-        echo ($sql);
-        $queryResult = Model::getPDO()->query($sql);
-        return $queryResult->fetchAll();
-    }
 
 }

@@ -9,9 +9,11 @@
     <link rel="stylesheet" href="../css/editor.css">
 
     <script charset="utf-8" src="../plugin/kindeditor-4.1.7/kindeditor-min.js"></script>
-    <script charset="utf-8" src="../js/jquery-3.1.1.js"></script>
     <script charset="utf-8" src="../plugin/kindeditor-4.1.7/lang/zh_CN.js"></script>
-    <script charset="utf-8" src="../js/editor.js"></script>
+
+
+    <script charset="utf-8" src="../js/jquery-3.1.1.js"></script>
+    <script charset="utf-8" src="../js/upload.js"></script>
     <script charset="utf-8" src="../js/common.js"></script>
 </head>
 <body class="all">
@@ -20,7 +22,7 @@
         <a href="/public/index.html" class="title">darxan的日志</a>
         <div class="searcher">
             <input type="text" class="search-box" placeholder="search" x-webkit-speech>
-            <button class="btn" title="SEARCH"> </button>
+            <button class="btn" title="SEARCH" onclick="onclick_function()"> </button>
         </div>
     </div>
 </div>
@@ -43,18 +45,12 @@
 
         <p>
             <input type="button" name="getHtml" value="取得HTML" />
-            <input type="button" name="isEmpty" value="判断是否为空" />
             <input type="button" name="getText" value="取得文本(包含img,embed)" />
             <input type="button" name="selectedHtml" value="取得选中HTML" />
-
+            <input type="button" name="clear" value="清空内容" />
             <input class="submit" type="button" name="submit" value="submit" />
             <br />
             <br />
-            <input type="button" name="setHtml" value="设置HTML" />
-            <input type="button" name="setText" value="设置文本" />
-            <input type="button" name="insertHtml" value="插入HTML" />
-            <input type="button" name="appendHtml" value="添加HTML" />
-            <input type="button" name="clear" value="清空内容" />
 
         </p>
     </div>

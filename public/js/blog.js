@@ -38,29 +38,21 @@ var blog ={
     }
 };
 
-function wrongUrl() {
-    alert('wrong url');
-};
 
 $(document).ready(function () {
-    var full_url = location.search;
-    var index = full_url.indexOf("?");
-    blog.init();
 
-    if(index==-1){
-        wrongUrl();
-    }else {
-        var params = full_url.substr(index + 1);
-        $.ajax(
-            {
-                url:generateAddress('/detail/'+params),
-                success:function (data) {
-                    console.log(data);
-                    blog.update(data)
-                },
-                type:'get',
-                dataType:'json'
-            }
-        );
-    }
+    blog.init();
+    var id = getURLParameters().id;
+    id = id==undefined?1:id;
+    $.ajax(
+        {
+            url:generateAddress('/detail/'+id),
+            success:function (data) {
+                console.log(data);
+                blog.update(data)
+            },
+            type:'get',
+            dataType:'json'
+        }
+    );
 });

@@ -18,10 +18,7 @@ class BlogController extends Controller
 {
 
 
-    public function __construct()
-    {
-        $this->model = new BlogModel();
-    }
+    public function __construct(){}
 
     public function search(Request $request){
 
@@ -33,8 +30,39 @@ class BlogController extends Controller
                 'category'=>[],
             ]
         );
-        list($bound,$desc, $key, $category) = array_values($success);
-        $this->show( $this->model->search($bound, $desc=='desc', $key, $category) );
+        list($bound,$order, $key, $category) = array_values($success);
+        $desc = $order=='desc';
+
+        if($bound=='-1'||$bound<0)
+        {
+            if($desc)
+            {
+                $bound = PHP_INT_MAX;
+            }else
+            {
+                $bound = 0;
+            }
+        }
+
+        $list = $this->model->search($bound, $desc, $key, $category, PAGE_SIZE);
+
+        if($list)
+        {
+            if($desc)
+            {
+                $bound = $list[0]['id'];
+            }else
+            {
+                $bound = end($list)['id'];
+            }
+        }
+        $this->show(
+            [
+                'bound'=>$bound,
+                'list'=>$list,
+                'isEnd'=>count($list)<PAGE_SIZE,
+            ]
+        );
     }
 
     public function detail(Request $request){
@@ -61,7 +89,24 @@ class BlogController extends Controller
                 'updated_at'=>['set_value:'.getCurrentDateTime()],
             ]
         );
-//        var_dump($success_parameters);
         $this->show($this->model->save($success_parameters));
+    }
+
+    public function update(Request $request){
+        $success_parameters = $request->validate(
+            [
+                'id'=>[],
+                'category'=>[],
+                'title'=>[],
+                'content'=>[],
+                'updated_at'=>['set_value:'.getCurrentDateTime()],
+            ]
+        );
+        $result = $this->model->update_by_assoc($success_parameters, ['id'=>$success_parameters['id']]);
+        $this->show(['result'=>$result]);
+    }
+
+    public function category(Request $request){
+        $this->show($this->model->distinct('category'));
     }
 }

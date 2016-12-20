@@ -5,7 +5,7 @@
  * Date: 2016/9/29
  * Time: 9:41
  */
-define('PAGE_SIZE',10);
+define('PAGE_SIZE',20);
 define('KEY_REQUEST_METHOD',0);
 define('KEY_ROUTER',1);
 define('KEY_AUTH',2);
@@ -24,7 +24,9 @@ define('DOCUMENT_PREFIX','');
  */
 define('WEB_HTML_ROOT',WEB_PREFIX.'/');
 define('HOME_PAGE',WEB_HTML_ROOT.'index.html');
-define('ADMIN_PAGE',WEB_HTML_ROOT.'admin/upload.html');
+define('ADMIN_PAGE',WEB_HTML_ROOT.'admin/index.html');
+define('EDIT_PAGE',WEB_HTML_ROOT.'admin/edit.html');
+define('UPLOAD_PAGE',WEB_HTML_ROOT.'admin/upload.html');
 define('LOGIN_PAGE',WEB_HTML_ROOT.'login.html');
 define('REGISTER_PAGE',WEB_HTML_ROOT.'register.html');
 define('',WEB_HTML_ROOT.'.html');

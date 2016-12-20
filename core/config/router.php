@@ -11,6 +11,7 @@ return [
     '/list'=>[
         ['POST'],  ['blog','search'],[]
     ],
+
     '/search/:bound/:order/:key/:category'=>[
         ['GET'],  ['blog','search'],[]
     ],
@@ -18,14 +19,29 @@ return [
     '/detail/:id'=>[
         ['GET','POST'], ['blog','detail'],[]
     ],
+    '/category'=>[
+        ['GET','POST'], ['blog','category'],[]
+    ],
 
     '/post'=>[
         ['POST'],['blog','post'],[]
     ],
 
+    '/update'=>[
+        ['POST'],['blog','update'],[]
+    ],
     '/admin'=>[
         ['GET','POST'], ['home','admin'],[]
     ],
+
+    '/upload'=>[
+        ['GET','POST'], ['home','upload'],[]
+    ],
+
+    '/edit'=>[
+        ['GET','POST'], ['home','edit'],[]
+    ],
+
     '/index'=>[
         ['GET','POST'], ['home','index'],[]
     ],

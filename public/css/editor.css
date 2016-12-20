@@ -2,7 +2,7 @@
 textarea{
     height: 500px;
     width: 99%;
-    visibility:hidden;
+    /*visibility:hidden;*/
     display: block;
 }
 form {

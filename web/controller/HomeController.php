@@ -22,4 +22,14 @@ class HomeController extends Controller
     {
         $this->jump(ADMIN_PAGE);
     }
+
+    public function edit()
+    {
+        $this->jump(EDIT_PAGE);
+    }
+
+    public function upload()
+    {
+        $this->jump(UPLOAD_PAGE);
+    }
 }

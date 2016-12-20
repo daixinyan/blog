@@ -53,6 +53,8 @@ class Controller
         Model::delete();
         exit(0);
     }
+
+
     protected function show($content){
         echo json_encode($content);
 //        exit();
