@@ -108,7 +108,7 @@ class BlogController extends Controller
 
     public function category(Request $request){
         $category = $this->model->distinct('category');
-        array_shift($category, 'all');
+        array_unshift($category, 'all');
         $this->show($category);
     }
 }
