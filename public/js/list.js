@@ -175,6 +175,10 @@ $(document).ready(function () {
     blogList.init();
     userSetting.init();
     categoryList.init()
+    var parameters = (getURLParameters())
+    if(parameters['key']!=undefined) {
+        $("#search-key").val(parameters['key']);
+    }
     list_search()
 });
 

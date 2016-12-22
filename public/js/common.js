@@ -43,7 +43,7 @@ function onclick_function() {
     if( typeof list_search === 'function' && $('.list-item').size()>0){
         list_search();
     }else{
-        window.location.href=generateAddress(isFromAdmin?'/admin/index':'/index');
+        window.location.href=generateAddress(isFromAdmin?'/admin/index':'/index'+'?key='+$("#search-key").val());
     }
 
 }
