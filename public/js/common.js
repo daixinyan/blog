@@ -40,7 +40,7 @@ function generateAddress(address)
 }
 
 function onclick_function() {
-    if( typeof list_search === 'function' && $('.list').length>0){
+    if( typeof list_search === 'function' && $('.list-item').length>0){
         list_search();
     }else{
         window.location.href=generateAddress(
