@@ -125,7 +125,7 @@ function list_search() {
     if(userSetting.updateKeyword())
     {
         userSetting.bound = -1;
-        blogList.init()
+        blogList.ul.empty()
     }
     get_and_add()
 }
