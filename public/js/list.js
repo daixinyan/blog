@@ -128,7 +128,7 @@ function get_and_update() {
 }
 
 function list_search() {
-    if(userSetting.updateKeyword())
+    if(userSetting.updateCategory(category) || userSetting.updateKeyword())
     {
         get_and_update()
     }
@@ -206,12 +206,7 @@ function getCurrentTime() {
 
 
 function onclick_update_category(category) {
-    if(userSetting.updateCategory(category))
-    {
-        userSetting.bound = -1;
-        blogList.ul.empty()
-        get_and_add()
-    }
+    list_search()
 }
 
 $(function(){
