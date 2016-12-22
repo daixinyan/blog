@@ -120,14 +120,17 @@ function get_and_add() {
     );
 }
 
+function get_and_update() {
+    userSetting.bound = -1;
+    blogList.ul.empty()
+    get_and_add()
+}
 
 function list_search() {
     if(userSetting.updateKeyword())
     {
-        userSetting.bound = -1;
-        blogList.ul.empty()
+        get_and_update()
     }
-    get_and_add()
 }
 
 var categoryList = {
@@ -179,7 +182,7 @@ $(document).ready(function () {
     if(parameters['key']!=undefined) {
         $("#search-key").val(parameters['key']);
     }
-    list_search()
+    get_and_update()
 });
 
 function getCurrentTime() {
@@ -193,8 +196,8 @@ function onclick_update_category(category) {
     {
         userSetting.bound = -1;
         blogList.ul.empty()
+        get_and_add()
     }
-    get_and_add()
 }
 
 $(function(){
