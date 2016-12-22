@@ -196,7 +196,7 @@ $(document).ready(function () {
     if(parameters['key']!=undefined) {
         $("#search-key").val(parameters['key']);
     }
-    get_and_update()
+    list_search()
 });
 
 function getCurrentTime() {
