@@ -118,6 +118,7 @@ function get_and_add() {
             dataType:'json'
         }
     );
+    categoryList.updateCateColor()
 }
 
 function get_and_update() {
@@ -170,6 +171,19 @@ var categoryList = {
             category.find('a').eq(0).text(item);
             myself.ul.append(category);
         });
+        myself.updateCateColor()
+
+    },
+
+    updateCateColor: function () {
+      $.each(this.ul.children(), function (i, category) {
+          var link = $(category).find('a').eq(0)
+          link.css('color', '#337ab7')
+          console.log(link.text())
+          if(link.text()==userSetting.getCategory()) {
+              link.css('color', '#9A12B3');
+          }
+      })
     }
 }
 
