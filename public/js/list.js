@@ -128,7 +128,7 @@ function get_and_update() {
 }
 
 function list_search() {
-    if(userSetting.updateCategory(category) || userSetting.updateKeyword())
+    if(userSetting.updateKeyword())
     {
         get_and_update()
     }
@@ -206,7 +206,10 @@ function getCurrentTime() {
 
 
 function onclick_update_category(category) {
-    list_search()
+    if(userSetting.updateCategory(category) || userSetting.updateKeyword())
+    {
+        get_and_update()
+    }
 }
 
 $(function(){
