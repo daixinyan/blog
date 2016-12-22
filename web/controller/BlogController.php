@@ -107,6 +107,8 @@ class BlogController extends Controller
     }
 
     public function category(Request $request){
-        $this->show($this->model->distinct('category'));
+        $category = $this->model->distinct('category');
+        $category[] = 'all';
+        $this->show($category);
     }
 }
