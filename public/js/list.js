@@ -192,7 +192,7 @@ function onclick_update_category(category) {
     if(userSetting.updateCategory(category))
     {
         userSetting.bound = -1;
-        blogList.init()
+        blogList.ul.empty()
     }
     get_and_add()
 }
