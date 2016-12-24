@@ -122,6 +122,7 @@ function get_and_add() {
 }
 
 function get_and_update() {
+    userSetting.updateKeyword()
     userSetting.bound = -1;
     blogList.ul.empty()
     get_and_add()
@@ -196,7 +197,7 @@ $(document).ready(function () {
     if(parameters['key']!=undefined) {
         $("#search-key").val(parameters['key']);
     }
-    list_search()
+    get_and_update()
 });
 
 function getCurrentTime() {
@@ -206,7 +207,7 @@ function getCurrentTime() {
 
 
 function onclick_update_category(category) {
-    if(userSetting.updateCategory(category) || userSetting.updateKeyword())
+    if(userSetting.updateCategory(category))
     {
         get_and_update()
     }
