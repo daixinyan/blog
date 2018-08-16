@@ -1,4 +1,4 @@
-# MVC Framwork
+# MVC Framework
 ------------
 **框架功能**：
 * 单入口（Router）：路由配置，
